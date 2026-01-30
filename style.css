@@ -104,7 +104,10 @@ nav a:hover::after {
 }
 
 /* =====================
-   SECTIONS (SCROLL EFFECT)
+   SECTIONS (SCROLL / REVEAL EFFECT)
+   NOTE: sections are visible by default.
+   The reveal animation runs only when the
+   class .reveal-visible is added (e.g. via JS).
 ===================== */
 section {
   padding: 70px 50px;
@@ -113,11 +116,24 @@ section {
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
+
+  /* Visible by default so content never disappears */
+  opacity: 1;
+  transform: translateY(0);
+  transition: none;
+}
+
+/* Helper classes to support a subtle reveal without hiding content permanently */
+.reveal-hidden {
   opacity: 0;
   transform: translateY(50px);
-  animation: reveal 1s ease forwards;
-  animation-timeline: view();
-  animation-range: entry 0% cover 30%;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 /* =====================
@@ -192,6 +208,7 @@ footer {
   }
 }
 
+/* (optional) keep this simple reveal keyframes if you prefer keyframe animation */
 @keyframes reveal {
   to {
     opacity: 1;
