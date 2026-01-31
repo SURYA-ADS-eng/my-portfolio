@@ -143,14 +143,12 @@ section {
   height: 160px;
   border-radius: 50%;
   object-fit: cover;
-
-  /* MOVE IMAGE DOWN TO SHOW FULL FACE + COAT */
-  object-position: center 40%;
-
+  object-position: center 20%; /* moves image down */
   border: 4px solid #00ffd5;
   box-shadow: 0 0 30px rgba(0, 255, 213, 0.5);
   margin-bottom: 20px;
 }
+
 
 
 }
