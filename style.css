@@ -344,7 +344,7 @@ footer {
 
 /* =====================
    GALLERY SECTION
-===================== */
+===================== 
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -375,3 +375,4 @@ footer {
   box-shadow: 0 20px 40px rgba(0,255,213,0.3);
 }
 
+*/
