@@ -1,178 +1,506 @@
 <!DOCTYPE html>
-<title>Surya.in</title>
-<link rel="stylesheet" href="style.css" />
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Surya — Data Analytics & Web Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#fff;color:#0a1628;overflow-x:hidden;}
+:root{
+  --b900:#042C53;--b800:#0C447C;--b700:#185FA5;--b600:#1e6fbe;
+  --b400:#378ADD;--b200:#85B7EB;--b100:#B5D4F4;--b50:#E6F1FB;
+  --white:#fff;--gray:#f7f9fc;--muted:#5a6a82;
+  --disp:'Syne',sans-serif;
+}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:1rem 6%;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(55,138,221,.1);transition:box-shadow .3s;}
+nav.scrolled{box-shadow:0 4px 24px rgba(24,95,165,.08);}
+.logo{font-family:var(--disp);font-size:1.5rem;font-weight:800;color:var(--b800);letter-spacing:-.03em;text-decoration:none;}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
+.nav-links a{font-size:.88rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--b700);}
+.nav-cta{background:var(--b700)!important;color:#fff!important;padding:.48rem 1.2rem;border-radius:50px;font-size:.84rem!important;}
+.nav-cta:hover{background:var(--b800)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--b800);border-radius:2px;}
+.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;background:#fff;border-bottom:1px solid var(--b100);padding:1.5rem 6%;flex-direction:column;gap:1.2rem;z-index:998;}
+.mobile-menu a{font-size:1rem;font-weight:500;color:var(--muted);text-decoration:none;}
+.mobile-menu.open{display:flex;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:7rem 6% 5rem;background:linear-gradient(150deg,var(--b900) 0%,var(--b800) 45%,var(--b700) 100%);position:relative;overflow:hidden;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:55px 55px;}
+.hero-glow{position:absolute;bottom:-10%;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(55,138,221,.25) 0%,transparent 70%);pointer-events:none;}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:.4rem 1.1rem;font-size:.75rem;color:var(--b100);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.8rem;position:relative;animation:fu .8s ease both;}
+.dot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.4);}}
+.hero h1{font-family:var(--disp);font-size:clamp(3.4rem,9vw,8.5rem);font-weight:800;line-height:.93;letter-spacing:-.04em;color:#fff;animation:fu .8s .1s ease both;position:relative;}
+.hero h1 em{color:var(--b200);font-style:normal;display:block;}
+.hero-role{margin-top:1.4rem;font-size:.95rem;color:var(--b100);font-weight:300;letter-spacing:.06em;text-transform:uppercase;animation:fu .8s .2s ease both;position:relative;}
+.hero-desc{margin-top:.8rem;max-width:480px;font-size:1.05rem;color:rgba(255,255,255,.65);line-height:1.65;animation:fu .8s .25s ease both;position:relative;}
+.hero-btns{display:flex;gap:1rem;margin-top:2.4rem;flex-wrap:wrap;justify-content:center;animation:fu .8s .35s ease both;position:relative;}
+.btn-w{background:#fff;color:var(--b800);padding:.85rem 2rem;border-radius:50px;font-weight:700;font-size:.92rem;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 24px rgba(0,0,0,.2);}
+.btn-w:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.25);}
+.btn-ghost{background:transparent;color:#fff;padding:.85rem 2rem;border-radius:50px;font-weight:500;font-size:.92rem;text-decoration:none;border:1.5px solid rgba(255,255,255,.35);transition:all .2s;}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.35rem;color:rgba(255,255,255,.35);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;animation:fu .8s .6s ease both;}
+.scroll-bar{width:1px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,.5),transparent);animation:sb 1.6s ease infinite;}
+@keyframes sb{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* QUICK NAV */
+.quick-nav{background:var(--b50);padding:1.6rem 6%;display:flex;align-items:center;justify-content:center;gap:.8rem;flex-wrap:wrap;}
+.qn-pill{display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1.5px solid var(--b100);color:var(--b700);font-size:.82rem;font-weight:600;padding:.45rem 1.1rem;border-radius:50px;text-decoration:none;transition:all .2s;}
+.qn-pill:hover{background:var(--b700);color:#fff;border-color:var(--b700);}
+
+/* PHOTO STRIP */
+.photo-strip{padding:5rem 6%;display:flex;align-items:center;justify-content:center;gap:5rem;flex-wrap:wrap;background:#fff;}
+.photo-frame{position:relative;width:200px;height:200px;flex-shrink:0;}
+.photo-frame::before{content:'';position:absolute;inset:-12px;border-radius:50%;border:2px dashed var(--b200);animation:spin 12s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.photo-frame img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:4px solid var(--b700);position:relative;z-index:1;}
+.photo-info h2{font-family:var(--disp);font-size:2.4rem;font-weight:800;letter-spacing:-.03em;color:var(--b900);}
+.photo-info p{font-size:1rem;color:var(--b700);font-weight:500;margin-top:.4rem;}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
+.tag{background:var(--b50);color:var(--b800);padding:.3rem .85rem;border-radius:50px;font-size:.78rem;font-weight:600;border:1px solid var(--b100);}
+
+/* SECTIONS */
+section{padding:6rem 6%;}
+.slabel{display:flex;align-items:center;gap:.6rem;font-family:var(--disp);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--b600);margin-bottom:.9rem;}
+.slabel::before{content:'';width:22px;height:2.5px;background:var(--b600);flex-shrink:0;border-radius:2px;}
+.stitle{font-family:var(--disp);font-size:clamp(2rem,4.5vw,3.4rem);font-weight:800;letter-spacing:-.03em;line-height:1.05;color:var(--b900);}
+.dark-sec .slabel{color:var(--b200);}
+.dark-sec .slabel::before{background:var(--b200);}
+.dark-sec .stitle{color:#fff;}
+
+/* ABOUT */
+#about{background:var(--gray);}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center;margin-top:3rem;}
+.about-text p{font-size:1.05rem;line-height:1.8;color:#3a4a60;margin-bottom:1.1rem;}
+.about-text strong{color:var(--b700);}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.stat{background:#fff;border:1px solid var(--b100);border-radius:16px;padding:1.4rem;text-align:center;}
+.stat-n{font-family:var(--disp);font-size:2.2rem;font-weight:800;color:var(--b800);letter-spacing:-.03em;}
+.stat-l{font-size:.8rem;color:var(--b600);font-weight:500;margin-top:.25rem;}
+
+/* SKILLS */
+#skills{background:var(--b900);}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;margin-top:3rem;}
+.skill-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:1.8rem;transition:background .3s,transform .3s;}
+.skill-card:hover{background:rgba(55,138,221,.14);transform:translateY(-4px);}
+.sk-icon{width:46px;height:46px;border-radius:12px;background:var(--b700);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1.1rem;}
+.skill-card h3{font-family:var(--disp);font-size:1rem;font-weight:700;color:#fff;margin-bottom:.7rem;}
+.pills{display:flex;flex-wrap:wrap;gap:.45rem;}
+.pill{background:rgba(181,212,244,.12);border:1px solid rgba(181,212,244,.22);color:var(--b100);padding:.28rem .75rem;border-radius:50px;font-size:.76rem;font-weight:500;}
+
+/* INTERNSHIPS */
+#internships{background:var(--gray);}
+.intern-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem;}
+.intern-card{background:#fff;border:1px solid var(--b100);border-radius:20px;padding:1.8rem;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;}
+.intern-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--b700),var(--b400));}
+.intern-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(24,95,165,.1);}
+.intern-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.9rem;gap:.5rem;}
+.intern-company{font-family:var(--disp);font-size:1.05rem;font-weight:700;color:var(--b900);}
+.intern-badge{background:var(--b50);color:var(--b700);font-size:.7rem;font-weight:700;padding:.25rem .7rem;border-radius:50px;border:1px solid var(--b100);white-space:nowrap;flex-shrink:0;}
+.intern-badge.done{background:#f0fdf4;color:#16a34a;border-color:#bbf7d0;}
+.intern-role{font-size:.95rem;color:var(--b700);font-weight:600;margin-bottom:.3rem;}
+.intern-dur{font-size:.8rem;color:var(--muted);margin-bottom:.8rem;}
+.intern-desc{font-size:.88rem;color:#4a5a70;line-height:1.65;}
+
+/* CERTIFICATES */
+#certificates{background:var(--b900);}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem;margin-top:3rem;}
+.cert-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:1.4rem;display:flex;align-items:flex-start;gap:1rem;transition:background .3s,transform .3s;}
+.cert-card:hover{background:rgba(55,138,221,.15);transform:translateY(-3px);}
+.cert-icon{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--b700),var(--b400));display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.cert-name{font-family:var(--disp);font-size:.9rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.3rem;}
+.cert-issuer{font-size:.78rem;color:var(--b200);font-weight:500;}
+.cert-year{font-size:.72rem;color:rgba(255,255,255,.35);margin-top:.2rem;}
+
+/* PROJECTS */
+#projects{background:#fff;}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.6rem;margin-top:3rem;}
+.proj-card{background:#fff;border:1px solid rgba(55,138,221,.14);border-radius:22px;overflow:hidden;transition:transform .3s,box-shadow .3s;}
+.proj-card:hover{transform:translateY(-6px);box-shadow:0 20px 56px rgba(24,95,165,.12);}
+.proj-top{background:linear-gradient(135deg,var(--b900) 0%,var(--b700) 100%);padding:2.2rem 1.8rem;position:relative;overflow:hidden;}
+.proj-top::after{content:'';position:absolute;right:-18px;top:-18px;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.055);}
+.proj-num{font-family:var(--disp);font-size:3.5rem;font-weight:800;color:rgba(255,255,255,.1);line-height:1;}
+.proj-top h3{font-family:var(--disp);font-size:1.2rem;font-weight:700;color:#fff;margin-top:.3rem;}
+.proj-body{padding:1.6rem 1.8rem;}
+.proj-body p{font-size:.9rem;color:#4a5a70;line-height:1.7;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem;}
+.ptag{background:var(--b50);color:var(--b700);padding:.28rem .7rem;border-radius:50px;font-size:.74rem;font-weight:600;border:1px solid var(--b100);}
+.proj-link{display:inline-flex;align-items:center;gap:.35rem;margin-top:1rem;color:var(--b700);font-weight:600;font-size:.85rem;text-decoration:none;transition:gap .2s;}
+.proj-link:hover{gap:.6rem;}
+
+/* CONTACT */
+#contact{background:var(--gray);}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;align-items:start;}
+.contact-left p{font-size:1.02rem;color:#4a5a70;line-height:1.75;margin-top:1.2rem;}
+.contact-cards{display:flex;flex-direction:column;gap:.9rem;}
+.cc{display:flex;align-items:center;gap:.9rem;background:#fff;border:1px solid var(--b100);border-radius:16px;padding:1.1rem 1.4rem;text-decoration:none;transition:all .2s;}
+.cc:hover{background:var(--b50);transform:translateX(4px);}
+.cc-icon{width:42px;height:42px;border-radius:11px;background:var(--b700);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.cc-lbl{font-size:.7rem;color:var(--b600);font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
+.cc-val{font-size:.9rem;color:var(--b900);font-weight:500;margin-top:.1rem;}
+
+/* FOOTER */
+footer{background:var(--b900);text-align:center;padding:2.2rem 6%;color:rgba(255,255,255,.35);font-size:.82rem;}
+footer a{color:var(--b200);text-decoration:none;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* EDIT HINT */
+.edit-hint{margin-top:1.2rem;font-size:.82rem;color:var(--muted);font-style:italic;}
+.edit-hint-dark{margin-top:1.2rem;font-size:.82rem;color:rgba(255,255,255,.3);font-style:italic;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .about-grid,.contact-wrap{grid-template-columns:1fr;gap:2.5rem;}
+  .photo-strip{gap:2.5rem;}
+}
+</style>
 </head>
 <body>
 
-
-<!-- NAVBAR -->
-<nav>
-<h2 class="logo">Surya</h2>
-<ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="logo">Surya.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#internships">Internships</a></li>
+    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#internships" onclick="closeMenu()">Internships</a>
+  <a href="#certificates" onclick="closeMenu()">Certificates</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
 
-<!-- HOME -->
-<section id="home" class="home hero-animate">
-
-  <img src="surya.jpg" alt="Profile Photo" class="profile-pic float-img" />
-
-  <h1 class="fade-up">Hi, I'm Surya 👋</h1>
-
-  <p class="typing-text">
-    Data Analytics | Web Developer
-  </p>
-
-  <button onclick="scrollToContact()" class="pulse-btn">
-    Let’s Connect
-  </button>
-
-</section>
-
-<!--<section id="gallery">
-  <h2>Achievements & Highlights</h2>
-
-  <div class="gallery-grid">
-
-    <div class="gallery-card">
-      <img src="hackathon1.jpg" alt="Hackathon Win">
-      <p>🏆 Hackathon Winner – Smart System Project</p>
-    </div>
-
-    <div class="gallery-card">
-      <img src="certificate1.jpg" alt="Certificate">
-      <p>📜 Data Analytics Certification</p>
-    </div>
-
-    <div class="gallery-card">
-      <img src="hackathon2.jpg" alt="Hackathon">
-      <p>🥈 24-Hour Hackathon Finalist</p>
-    </div>
-
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-badge"><span class="dot"></span> Open to Internships &amp; Opportunities</div>
+  <h1>Hi, I'm<em>Surya</em></h1>
+  <div class="hero-role">Data Analytics &nbsp;·&nbsp; Web Developer &nbsp;·&nbsp; AI &amp; Data Science</div>
+  <p class="hero-desc">Turning raw data into insights and ideas into real-world applications.</p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn-w">View My Work</a>
+    <a href="#contact" class="btn-ghost">Get in Touch</a>
   </div>
+  <div class="hero-scroll"><div class="scroll-bar"></div><span>Scroll</span></div>
 </section>
--->
 
+<!-- QUICK NAV PILLS -->
+<div class="quick-nav">
+  <a href="#about" class="qn-pill">👤 About</a>
+  <a href="#skills" class="qn-pill">⚡ Skills</a>
+  <a href="#internships" class="qn-pill">💼 Internships</a>
+  <a href="#certificates" class="qn-pill">🏆 Certificates</a>
+  <a href="#projects" class="qn-pill">🚀 Projects</a>
+  <a href="#contact" class="qn-pill">📩 Contact</a>
+</div>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip reveal">
+  <div class="photo-frame">
+    <img src="surya.jpg" alt="Surya" onerror="this.style.background='#185FA5';this.removeAttribute('src')"/>
+  </div>
+  <div class="photo-info">
+    <h2>Surya</h2>
+    <p>AI &amp; Data Science Student</p>
+    <div class="tags">
+      <span class="tag">Data Analytics</span>
+      <span class="tag">Web Development</span>
+      <span class="tag">React.js</span>
+      <span class="tag">SQL &amp; Excel</span>
+      <span class="tag">Node.js</span>
+    </div>
+  </div>
+</div>
 
 <!-- ABOUT -->
 <section id="about">
-<h2>About </h2>
-<p>
-I am an AI & Data Science student with a strong interest in
-<b>Data Analytics and Web Development</b>.
-I have hands-on knowledge of tools like <b>Excel and SQL</b>
-and enjoy building practical, real-world applications.
-Currently, I am developing an <b>On-Duty Management System</b>
-to automate and streamline student OD request processes.
-</p>
-
-
+  <div class="slabel">Who I Am</div>
+  <div class="stitle">Building with data.<br>Creating with code.</div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm an <strong>AI &amp; Data Science student</strong> passionate about <strong>Data Analytics and Web Development</strong>. I love uncovering stories hidden inside data and building applications that solve real problems.</p>
+      <p>With strong hands-on experience in <strong>Excel, SQL, React.js, and Node.js</strong>, I work across the full stack and the data pipeline. Currently developing an <strong>On-Duty Management System</strong> to automate student OD request workflows at my college.</p>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stat"><div class="stat-n">5+</div><div class="stat-l">Certificates</div></div>
+      <div class="stat"><div class="stat-n">2+</div><div class="stat-l">Internships</div></div>
+      <div class="stat"><div class="stat-n">3+</div><div class="stat-l">Projects</div></div>
+      <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Curiosity</div></div>
+    </div>
+  </div>
 </section>
-
 
 <!-- SKILLS -->
-<section id="skills">
-  <h2>Technical Skills</h2>
-
-  <p><b>Web Development:</b> HTML, CSS, JavaScript , React.js, Node.js, MongoDB</p>
-  <p><b>Data Analytics:</b> Excel, SQL, Data Cleaning, Data Visualization</p>
+<section id="skills" class="dark-sec">
+  <div class="slabel">What I Know</div>
+  <div class="stitle">My Technical<br>Arsenal</div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="sk-icon">📊</div>
+      <h3>Data Analytics</h3>
+      <div class="pills">
+        <span class="pill">Excel</span><span class="pill">SQL</span>
+        <span class="pill">Data Cleaning</span><span class="pill">Data Visualization</span>
+        <span class="pill">Dashboard Design</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="sk-icon">🌐</div>
+      <h3>Web Development</h3>
+      <div class="pills">
+        <span class="pill">HTML</span><span class="pill">CSS</span>
+        <span class="pill">JavaScript</span><span class="pill">React.js</span>
+        <span class="pill">Node.js</span><span class="pill">MongoDB</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="sk-icon">🤖</div>
+      <h3>AI &amp; Data Science</h3>
+      <div class="pills">
+        <span class="pill">Python</span><span class="pill">Machine Learning</span>
+        <span class="pill">Statistics</span><span class="pill">Data Modelling</span>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- INTERNSHIPS -->
+<!-- ✏️ EDIT: Replace company names, roles, dates and descriptions with your real internship details -->
+<section id="internships">
+  <div class="slabel">Experience</div>
+  <div class="stitle">Internships &amp;<br>Work Experience</div>
+  <div class="intern-grid">
 
+    <div class="intern-card reveal">
+      <div class="intern-header">
+        <div class="intern-company">Company Name Here</div>
+        <span class="intern-badge">Ongoing</span>
+      </div>
+      <div class="intern-role">Data Analytics Intern</div>
+      <div class="intern-dur">📅 Month Year – Present</div>
+      <div class="intern-desc">Worked on data cleaning, analysis, and dashboard creation using Excel and SQL. Delivered actionable insights to the team and built automated reporting pipelines.</div>
+    </div>
+
+    <div class="intern-card reveal">
+      <div class="intern-header">
+        <div class="intern-company">Company Name Here</div>
+        <span class="intern-badge done">Completed</span>
+      </div>
+      <div class="intern-role">Web Development Intern</div>
+      <div class="intern-dur">📅 Month Year – Month Year</div>
+      <div class="intern-desc">Built and deployed responsive web pages using React.js and Node.js. Collaborated in an agile team environment and contributed to production features.</div>
+    </div>
+
+    <!-- ADD MORE: copy one intern-card block above and paste here with your details -->
+
+  </div>
+  <p class="edit-hint">✏️ Update the company names, roles, dates and descriptions above with your real internship details before uploading.</p>
+</section>
+
+<!-- CERTIFICATES -->
+<!-- ✏️ EDIT: Replace certificate names, issuers and years with your actual credentials -->
+<section id="certificates" class="dark-sec">
+  <div class="slabel">Achievements</div>
+  <div class="stitle">Certificates &amp;<br>Credentials</div>
+  <div class="cert-grid">
+
+    <div class="cert-card reveal">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">Certificate Name Here</div>
+        <div class="cert-issuer">Issuing Organisation</div>
+        <div class="cert-year">Year</div>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">Certificate Name Here</div>
+        <div class="cert-issuer">Issuing Organisation</div>
+        <div class="cert-year">Year</div>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">Certificate Name Here</div>
+        <div class="cert-issuer">Issuing Organisation</div>
+        <div class="cert-year">Year</div>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">Certificate Name Here</div>
+        <div class="cert-issuer">Issuing Organisation</div>
+        <div class="cert-year">Year</div>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">Certificate Name Here</div>
+        <div class="cert-issuer">Issuing Organisation</div>
+        <div class="cert-year">Year</div>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">Certificate Name Here</div>
+        <div class="cert-issuer">Issuing Organisation</div>
+        <div class="cert-year">Year</div>
+      </div>
+    </div>
+
+    <!-- ADD MORE: copy one cert-card block above and paste here -->
+
+  </div>
+  <p class="edit-hint-dark">✏️ Replace the certificate names, issuers and years above with your actual credentials before uploading.</p>
+</section>
 
 <!-- PROJECTS -->
 <section id="projects">
-<h2>Projects</h2>
-<div class="project-card">
-<h3>OD Management System</h3>
-<p>
-A web application for managing on-duty requests with student login,
-faculty approval, and admin control.
-</p>
-</div>
-</section>
+  <div class="slabel">My Work</div>
+  <div class="stitle">Featured<br>Projects</div>
+  <div class="proj-grid">
 
-
-<!-- CONTACT -->
-<section id="contact" class="contact-section">
-  <h2>Let’s Connect</h2>
-
-  <div class="contact-two-column">
-
-    <!-- LEFT SIDE -->
-    <div class="contact-column">
-      <a href="mailto:vpksurya05@gmail.com" class="contact-card">
-        <span class="icon">📧</span>
-        <div>
-          <h4>Email</h4>
-          <p>vpksurya05@gmail.com</p>
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <div class="proj-num">01</div>
+        <h3>OD Management System</h3>
+      </div>
+      <div class="proj-body">
+        <p>A full-stack web application to automate student On-Duty requests — with student login, faculty approval workflow, and admin control panel.</p>
+        <div class="proj-tags">
+          <span class="ptag">React.js</span><span class="ptag">Node.js</span><span class="ptag">MongoDB</span><span class="ptag">Full Stack</span>
         </div>
-      </a>
-
-      <a href="tel:+919489228075" class="contact-card">
-        <span class="icon">📞</span>
-        <div>
-          <h4>Phone</h4>
-          <p>+91 9489228075</p>
-        </div>
-      </a>
+        <a href="https://github.com/SURYA-ADS-eng" target="_blank" class="proj-link">View on GitHub →</a>
+      </div>
     </div>
 
-    <!-- RIGHT SIDE -->
-    <div class="contact-column">
-      <a href="https://www.linkedin.com/in/surya-ads/"
-         target="_blank"
-         class="contact-card">
-        <span class="icon">💼</span>
-        <div>
-          <h4>LinkedIn</h4>
-          <p>linkedin.com/in/surya-ads</p>
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <div class="proj-num">02</div>
+        <h3>Data Analytics Dashboard</h3>
+      </div>
+      <div class="proj-body">
+        <p>Interactive dashboards built with Excel &amp; SQL — transforming raw datasets into visual stories that drive real business decisions.</p>
+        <div class="proj-tags">
+          <span class="ptag">Excel</span><span class="ptag">SQL</span><span class="ptag">Data Visualization</span>
         </div>
-      </a>
+        <a href="https://github.com/SURYA-ADS-eng" target="_blank" class="proj-link">View on GitHub →</a>
+      </div>
+    </div>
 
-      <a href="https://github.com/SURYA-ADS-eng"
-         target="_blank"
-         class="contact-card">
-        <span class="icon">💻</span>
-        <div>
-          <h4>GitHub</h4>
-          <p>github.com/SURYA-ADS-eng</p>
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <div class="proj-num">03</div>
+        <h3>Add Your Next Project</h3>
+      </div>
+      <div class="proj-body">
+        <p>Describe your project here. What problem does it solve? What technologies did you use? Keep it clear and impactful.</p>
+        <div class="proj-tags">
+          <span class="ptag">Tech 1</span><span class="ptag">Tech 2</span>
         </div>
-      </a>
+        <a href="https://github.com/SURYA-ADS-eng" target="_blank" class="proj-link">View on GitHub →</a>
+      </div>
     </div>
 
   </div>
 </section>
 
+<!-- CONTACT -->
+<section id="contact">
+  <div class="slabel">Get in Touch</div>
+  <div class="stitle">Let's Build<br>Something Together</div>
+  <div class="contact-wrap">
+    <div class="contact-left reveal">
+      <p>Whether you have a project in mind, an internship opportunity, or just want to connect — my inbox is always open. I'd love to hear from you!</p>
+    </div>
+    <div class="contact-cards reveal">
+      <a href="mailto:vpksurya05@gmail.com" class="cc">
+        <div class="cc-icon">📧</div>
+        <div><div class="cc-lbl">Email</div><div class="cc-val">vpksurya05@gmail.com</div></div>
+      </a>
+      <a href="tel:+919489228075" class="cc">
+        <div class="cc-icon">📞</div>
+        <div><div class="cc-lbl">Phone</div><div class="cc-val">+91 9489228075</div></div>
+      </a>
+      <a href="https://www.linkedin.com/in/surya-ads/" target="_blank" class="cc">
+        <div class="cc-icon">💼</div>
+        <div><div class="cc-lbl">LinkedIn</div><div class="cc-val">linkedin.com/in/surya-ads</div></div>
+      </a>
+      <a href="https://github.com/SURYA-ADS-eng" target="_blank" class="cc">
+        <div class="cc-icon">💻</div>
+        <div><div class="cc-lbl">GitHub</div><div class="cc-val">github.com/SURYA-ADS-eng</div></div>
+      </a>
+    </div>
+  </div>
+</section>
 
-
+<!-- FOOTER -->
 <footer>
-<p>© 2025 Surya. All rights reserved.</p>
+  © 2025 Surya. All rights reserved. &nbsp;·&nbsp;
+  <a href="https://github.com/SURYA-ADS-eng" target="_blank">GitHub</a> &nbsp;·&nbsp;
+  <a href="https://www.linkedin.com/in/surya-ads/" target="_blank">LinkedIn</a>
 </footer>
 
+<script>
+// Navbar scroll shadow
+window.addEventListener('scroll',function(){
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>30);
+});
 
-<script src="script.js"></script>
+// Hamburger menu
+document.getElementById('ham').addEventListener('click',function(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');}
+
+// Scroll reveal
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e,i){
+    if(e.isIntersecting){
+      setTimeout(function(){e.target.classList.add('visible');},i*70);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(r){obs.observe(r);});
+</script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
