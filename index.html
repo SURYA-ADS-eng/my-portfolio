@@ -180,21 +180,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:ce
 
 /* ════ P7 CONTACT ════ */
 .p7{background:linear-gradient(155deg,var(--b900) 0%,#0d3466 100%);}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem;text-align:left;max-width:780px;margin-left:auto;margin-right:auto;}
-.contact-left p{font-size:1rem;color:rgba(255,255,255,.65);line-height:1.75;margin-top:1rem;}
-.contact-cards{display:flex;flex-direction:column;gap:.8rem;}
-.cc-card{
-  display:flex;align-items:center;gap:.85rem;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(133,183,235,.15);
-  border-radius:14px;padding:1rem 1.2rem;
-  transition:background .2s,transform .2s;
-}
-.cc-card:hover{background:rgba(55,138,221,.15);transform:translateX(4px);}
-.cc-icon{width:40px;height:40px;border-radius:10px;background:var(--b700);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
-.cc-lbl{font-size:.65rem;color:var(--b200);font-weight:700;letter-spacing:.07em;text-transform:uppercase;}
-.cc-val{font-size:.86rem;color:#fff;font-weight:500;margin-top:.1rem;}
-footer-line{display:block;text-align:center;color:rgba(255,255,255,.25);font-size:.76rem;margin-top:2rem;}
+.cgrd{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:1.8rem;text-align:left;max-width:760px;margin-left:auto;margin-right:auto;}
+.cleft p{font-size:.96rem;color:rgba(255,255,255,.62);line-height:1.72;margin-top:.8rem;}
+.cccards{display:flex;flex-direction:column;gap:.75rem;}
+.cccard{display:flex;align-items:center;gap:.8rem;background:rgba(255,255,255,.06);border:1px solid rgba(133,183,235,.14);border-radius:13px;padding:.9rem 1.1rem;transition:background .2s,transform .2s;}
+.cccard:hover{background:rgba(55,138,221,.14);transform:translateX(4px);}
+.ccico{width:38px;height:38px;border-radius:9px;background:var(--b700);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+.cclbl{font-size:.63rem;color:var(--b200);font-weight:700;letter-spacing:.07em;text-transform:uppercase;}
+.ccval{font-size:.83rem;color:#fff;font-weight:500;margin-top:.08rem;}
+.fline{display:block;text-align:center;color:rgba(255,255,255,.22);font-size:.73rem;margin-top:1.8rem;}
 
 /* ── RESPONSIVE ── */
 @media(max-width:760px){
@@ -407,33 +401,30 @@ footer-line{display:block;text-align:center;color:rgba(255,255,255,.25);font-siz
   </div>
 </div>
 
-<!-- ══ PANEL 7: CONTACT ══ -->
-  <div class="panel p7" id="panel-6">
-    <div class="orb orb-l1"></div>
-    <div class="orb orb-l2"></div>
-    <div class="orb orb-r1"></div>
-    <div class="orb orb-r2"></div>
-    <div class="orb-ring ring1"></div>
-
-    <div class="panel-inner">
-      <div class="section-tag">Get In Touch</div>
-      <div class="big-title" style="color:#fff;">Let's Connect<br>&amp; Collaborate</div>
-      <div class="contact-grid">
-        <div class="contact-left">
-          <p>I'm actively looking for <strong style="color:#fff;">Data Analytics internships and opportunities</strong>. If you have a project, role, or just want to talk data — reach out!</p>
-        </div>
-        <div class="contact-cards">
-          <a href="mailto:vpksurya05@gmail.com" class="cc-card"><div class="cc-icon">📧</div><div><div class="cc-lbl">Email</div><div class="cc-val">vpksurya05@gmail.com</div></div></a>
-          <a href="tel:+919489228075" class="cc-card"><div class="cc-icon">📞</div><div><div class="cc-lbl">Phone</div><div class="cc-val">+91 9489228075</div></div></a>
-          <a href="https://www.linkedin.com/in/surya-ads/" target="_blank" class="cc-card"><div class="cc-icon">💼</div><div><div class="cc-lbl">LinkedIn</div><div class="cc-val">linkedin.com/in/surya-ads</div></div></a>
-          <a href="https://github.com/SURYA-ADS-eng" target="_blank" class="cc-card"><div class="cc-icon">💻</div><div><div class="cc-lbl">GitHub</div><div class="cc-val">github.com/SURYA-ADS-eng</div></div></a>
-        </div>
+<!-- ══ P7 CONTACT ══ -->
+<div class="panel p7" id="p6">
+  <div class="orb ol1"></div><div class="orb ol2"></div>
+  <div class="orb or1"></div><div class="orb or2"></div>
+  <div class="oring orn1"></div>
+  <div class="pi">
+    <div class="stag stag-light ani">Get In Touch</div>
+    <div class="title tc-light ani" style="font-size:clamp(2rem,4.8vw,3.4rem)">Let's Connect<br>&amp; Collaborate</div>
+    <div class="cgrd ani">
+      <div class="cleft">
+        <p>I'm actively looking for <strong style="color:#fff">Data Analytics internships and opportunities</strong>. If you have a project, role, or just want to talk data — reach out!</p>
       </div>
-      <footer-line>© 2025 Surya &nbsp;·&nbsp; Data Analytics Portfolio</footer-line>
+      <div class="cccards">
+        <a href="mailto:vpksurya05@gmail.com" class="cccard"><div class="ccico">📧</div><div><div class="cclbl">Email</div><div class="ccval">vpksurya05@gmail.com</div></div></a>
+        <a href="tel:+919489228075" class="cccard"><div class="ccico">📞</div><div><div class="cclbl">Phone</div><div class="ccval">+91 9489228075</div></div></div></a>
+        <a href="https://www.linkedin.com/in/surya-ads/" target="_blank" class="cccard"><div class="ccico">💼</div><div><div class="cclbl">LinkedIn</div><div class="ccval">linkedin.com/in/surya-ads</div></div></a>
+        <a href="https://github.com/SURYA-ADS-eng" target="_blank" class="cccard"><div class="ccico">💻</div><div><div class="cclbl">GitHub</div><div class="ccval">github.com/SURYA-ADS-eng</div></div></a>
+      </div>
     </div>
+    <span class="fline">© 2025 Surya &nbsp;·&nbsp; Data Analytics Portfolio</span>
   </div>
+</div>
 
-</div><!-- end scroll-wrap -->
+</div><!-- /sw -->
 
 <script>
 (function(){
