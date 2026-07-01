@@ -8,19 +8,17 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --b900:#042C53;--b800:#0C447C;--b700:#185FA5;--b500:#2575c4;
-  --b400:#378ADD;--b200:#85B7EB;--b100:#B5D4F4;--b50:#E6F1FB;
-  --D:'Syne',sans-serif;
+  --b900:#042C53;--b800:#0C447C;--b700:#185FA5;--b500:#2575c4;
+  --b400:#378ADD;--b200:#85B7EB;--b100:#B5D4F4;--b50:#E6F1FB;
+  --D:'Syne',sans-serif;
 }
 html,body{font-family:'DM Sans',sans-serif;background:var(--b900);color:#fff;overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
-
 /* ── SCROLL SNAP ── */
 .sw{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth;}
 .sw::-webkit-scrollbar{display:none;}
 .sw{-ms-overflow-style:none;scrollbar-width:none;}
 .panel{scroll-snap-align:start;scroll-snap-stop:always;height:100vh;width:100%;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-
 /* ── ORBS ── */
 .orb{position:absolute;border-radius:50%;pointer-events:none;}
 .ol1{width:260px;height:260px;left:-90px;top:12%;background:radial-gradient(circle,rgba(55,138,221,.3),transparent 70%);animation:fL 7s ease-in-out infinite;}
@@ -38,7 +36,6 @@ a{text-decoration:none;color:inherit;}
 @keyframes fL{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
 @keyframes fR{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
 @keyframes rspin{to{transform:rotate(360deg)}}
-
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;padding:.85rem 6%;background:rgba(4,44,83,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(133,183,235,.12);}
 .logo{font-family:var(--D);font-size:1.35rem;font-weight:800;color:#fff;letter-spacing:-.03em;cursor:pointer;}
@@ -51,22 +48,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:ce
 .mmenu{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(4,44,83,.97);backdrop-filter:blur(20px);padding:1.4rem 6%;flex-direction:column;gap:1.1rem;z-index:9998;border-bottom:1px solid rgba(133,183,235,.14);}
 .mmenu a{font-size:.95rem;font-weight:500;color:rgba(255,255,255,.7);cursor:pointer;}
 .mmenu.open{display:flex;}
-
 /* ── SCROLL DOTS ── */
 .sdots{position:fixed;right:20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:9px;z-index:1000;}
 .sdot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.22);border:1.5px solid rgba(255,255,255,.3);cursor:pointer;transition:all .3s;}
 .sdot.on{background:#fff;transform:scale(1.3);}
-
 /* ── PANEL INNER ── */
 .pi{position:relative;z-index:10;max-width:920px;width:92%;text-align:center;padding:0 1rem;}
-
 /* ── ALL CONTENT VISIBLE BY DEFAULT (no opacity:0 trap) ── */
 /* Animate in only when .show class added via JS */
 .ani{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
 .ani.show{opacity:1;transform:none;}
 /* Hero panel always fully visible */
 .p1 .ani{opacity:1;transform:none;}
-
 /* ── SECTION TAG + TITLE ── */
 .stag{font-family:var(--D);font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;gap:.5rem;justify-content:center;margin-bottom:.55rem;}
 .stag::before,.stag::after{content:'';width:18px;height:2px;border-radius:2px;}
@@ -77,7 +70,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:ce
 .title{font-family:var(--D);font-weight:800;letter-spacing:-.033em;line-height:1.05;}
 .tc-light{color:#fff;}
 .tc-dark{color:var(--b900);}
-
 /* ════ P1 HERO ════ */
 .p1{background:linear-gradient(155deg,var(--b900) 0%,var(--b800) 60%,#0d3466 100%);}
 .hbadge{display:inline-flex;align-items:center;gap:.45rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.17);border-radius:50px;padding:.35rem 1rem;font-size:.7rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--b100);margin-bottom:1.1rem;}
@@ -95,7 +87,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:ce
 .scue{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.3rem;color:rgba(255,255,255,.28);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;}
 .scueline{width:1px;height:32px;background:linear-gradient(to bottom,rgba(255,255,255,.5),transparent);animation:scl 1.6s ease infinite;}
 @keyframes scl{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-
 /* ════ P2 ABOUT ════ */
 .p2{background:#fff;color:var(--b900);}
 .agrid{display:grid;grid-template-columns:1fr 1fr;gap:2.8rem;margin-top:1.6rem;text-align:left;}
@@ -105,7 +96,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:ce
 .sbox{background:var(--b50);border:1px solid var(--b100);border-radius:14px;padding:1.2rem;text-align:center;}
 .snum{font-family:var(--D);font-size:1.9rem;font-weight:800;color:var(--b800);letter-spacing:-.03em;}
 .slbl{font-size:.72rem;color:#185FA5;font-weight:500;margin-top:.2rem;}
-
 /* ════ P3 SKILLS ════ */
 .p3{background:linear-gradient(160deg,#06305a 0%,var(--b900) 100%);}
 .obox{position:absolute;top:50%;left:50%;transform:translate(-50%,-38%);width:520px;height:520px;}
@@ -136,7 +126,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:ce
 .so6{top:calc(50% - 31px + 152px);left:calc(50% - 31px - 152px);}
 .so7{top:calc(50% - 31px);left:calc(50% - 31px - 215px);}
 .so8{top:calc(50% - 31px - 152px);left:calc(50% - 31px - 152px);}
-
 /* ════ P4 INTERNSHIPS ════ */
 .p4{background:#fff;color:var(--b900);}
 .icards{display:flex;gap:1.1rem;margin-top:1.5rem;justify-content:center;flex-wrap:wrap;}
@@ -151,7 +140,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:ce
 .icdur{font-size:.73rem;color:#7a8a9a;margin-bottom:.6rem;}
 .icdesc{font-size:.81rem;color:#4a5a70;line-height:1.6;}
 .enote{margin-top:1rem;font-size:.75rem;color:var(--b400);font-style:italic;text-align:center;}
-
 /* ════ P5 CERTIFICATES ════ */
 .p5{background:linear-gradient(160deg,#06305a 0%,var(--b900) 100%);}
 .cgrid{display:flex;gap:.9rem;margin-top:1.5rem;justify-content:center;flex-wrap:wrap;max-width:840px;margin-left:auto;margin-right:auto;}
@@ -161,7 +149,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:ce
 .cn{font-family:var(--D);font-size:.82rem;font-weight:700;color:#fff;line-height:1.3;}
 .ciss{font-size:.7rem;color:var(--b200);margin-top:.18rem;}
 .cyr{font-size:.63rem;color:rgba(255,255,255,.28);margin-top:.1rem;}
-
 /* ════ P6 PROJECTS ════ */
 .p6{background:#fff;color:var(--b900);}
 .prow{display:flex;gap:.9rem;margin-top:1.1rem;justify-content:center;flex-wrap:nowrap;}
@@ -177,7 +164,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:ce
 .ptag{background:var(--b50);color:var(--b700);padding:.17rem .55rem;border-radius:50px;font-size:.65rem;font-weight:600;border:1px solid var(--b100);}
 .plink{display:inline-flex;align-items:center;gap:.28rem;margin-top:.65rem;color:var(--b700);font-weight:600;font-size:.75rem;transition:gap .2s;}
 .plink:hover{gap:.5rem;}
-
 /* ════ P7 CONTACT ════ */
 .p7{background:linear-gradient(155deg,var(--b900) 0%,#0d3466 100%);}
 .cgrd{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:1.8rem;text-align:left;max-width:760px;margin-left:auto;margin-right:auto;}
@@ -189,296 +175,275 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:ce
 .cclbl{font-size:.63rem;color:var(--b200);font-weight:700;letter-spacing:.07em;text-transform:uppercase;}
 .ccval{font-size:.83rem;color:#fff;font-weight:500;margin-top:.08rem;}
 .fline{display:block;text-align:center;color:rgba(255,255,255,.22);font-size:.73rem;margin-top:1.8rem;}
-
 /* ── RESPONSIVE ── */
 @media(max-width:760px){
-  .nav-links{display:none;}.ham{display:flex;}
-  .agrid,.cgrd{grid-template-columns:1fr;}
-  .sdots{right:10px;}
-  .ol1,.or1{opacity:.2;}
-  .orn1,.orn2{display:none;}
-  .obox{width:300px;height:300px;}
-  .rb{display:none;}
-  .so{display:none;}
-  .sn{width:58px;height:58px;}
-  .sni{font-size:.95rem;}
-  .sn1{top:calc(50% - 29px - 90px);left:calc(50% - 29px);}
-  .sn2{top:calc(50% - 29px - 45px);left:calc(50% - 29px + 78px);}
-  .sn3{top:calc(50% - 29px + 45px);left:calc(50% - 29px + 78px);}
-  .sn4{top:calc(50% - 29px + 90px);left:calc(50% - 29px);}
-  .sn5{top:calc(50% - 29px + 45px);left:calc(50% - 29px - 78px);}
-  .sn6{top:calc(50% - 29px - 45px);left:calc(50% - 29px - 78px);}
-  .prow{flex-wrap:wrap;}
-  .pcard{max-width:100%;flex:1 1 calc(50% - .5rem);}
+  .nav-links{display:none;}.ham{display:flex;}
+  .agrid,.cgrd{grid-template-columns:1fr;}
+  .sdots{right:10px;}
+  .ol1,.or1{opacity:.2;}
+  .orn1,.orn2{display:none;}
+  .obox{width:300px;height:300px;}
+  .rb{display:none;}
+  .so{display:none;}
+  .sn{width:58px;height:58px;}
+  .sni{font-size:.95rem;}
+  .sn1{top:calc(50% - 29px - 90px);left:calc(50% - 29px);}
+  .sn2{top:calc(50% - 29px - 45px);left:calc(50% - 29px + 78px);}
+  .sn3{top:calc(50% - 29px + 45px);left:calc(50% - 29px + 78px);}
+  .sn4{top:calc(50% - 29px + 90px);left:calc(50% - 29px);}
+  .sn5{top:calc(50% - 29px + 45px);left:calc(50% - 29px - 78px);}
+  .sn6{top:calc(50% - 29px - 45px);left:calc(50% - 29px - 78px);}
+  .prow{flex-wrap:wrap;}
+  .pcard{max-width:100%;flex:1 1 calc(50% - .5rem);}
 }
 </style>
 </head>
 <body>
-
 <!-- NAV -->
 <nav>
-  <div class="logo" onclick="gp(0)">Surya.in</div>
-  <ul class="nav-links">
-    <li><a onclick="gp(1)">About</a></li>
-    <li><a onclick="gp(2)">Skills</a></li>
-    <li><a onclick="gp(3)">Internships</a></li>
-    <li><a onclick="gp(4)">Certificates</a></li>
-    <li><a onclick="gp(5)">Projects</a></li>
-    <li><a onclick="gp(6)" class="nav-cta">Contact</a></li>
-  </ul>
-  <button class="ham" id="ham"><span></span><span></span><span></span></button>
+  <div class="logo" onclick="gp(0)">Surya.in</div>
+  <ul class="nav-links">
+    <li><a onclick="gp(1)">About</a></li>
+    <li><a onclick="gp(2)">Skills</a></li>
+    <li><a onclick="gp(3)">Internships</a></li>
+    <li><a onclick="gp(4)">Certificates</a></li>
+    <li><a onclick="gp(5)">Projects</a></li>
+    <li><a onclick="gp(6)" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="ham" id="ham"><span></span><span></span><span></span></button>
 </nav>
-
 <div class="mmenu" id="mm">
-  <a onclick="gp(1);cm()">About</a>
-  <a onclick="gp(2);cm()">Skills</a>
-  <a onclick="gp(3);cm()">Internships</a>
-  <a onclick="gp(4);cm()">Certificates</a>
-  <a onclick="gp(5);cm()">Projects</a>
-  <a onclick="gp(6);cm()">Contact</a>
+  <a onclick="gp(1);cm()">About</a>
+  <a onclick="gp(2);cm()">Skills</a>
+  <a onclick="gp(3);cm()">Internships</a>
+  <a onclick="gp(4);cm()">Certificates</a>
+  <a onclick="gp(5);cm()">Projects</a>
+  <a onclick="gp(6);cm()">Contact</a>
 </div>
-
 <div class="sdots" id="dots"></div>
-
 <!-- SCROLL CONTAINER -->
 <div class="sw" id="sw">
-
 <!-- ══ P1 HERO ══ -->
 <div class="panel p1" id="p0">
-  <div class="orb ol1"></div><div class="orb ol2"></div><div class="orb ol3"></div>
-  <div class="orb odot od1"></div>
-  <div class="orb or1"></div><div class="orb or2"></div><div class="orb or3"></div>
-  <div class="orb odot od2"></div>
-  <div class="oring orn1"></div><div class="oring orn2"></div>
-  <div class="pi">
-    <div class="hbadge ani"><span class="dlive"></span> Open to Data Analytics Roles</div>
-    <div class="hname ani">Hi, I'm<span>Surya</span></div>
-    <div class="hrole ani">Data Analyst &nbsp;·&nbsp; AI &amp; Data Science</div>
-    <p class="htag ani">Turning raw data into stories that drive real decisions.</p>
-    <div class="hbtns ani">
-      <button class="bsolid" onclick="gp(5)">View Projects</button>
-      <button class="bline" onclick="gp(6)">Contact Me</button>
-    </div>
-  </div>
-  <div class="scue"><div class="scueline"></div><span>Scroll</span></div>
+  <div class="orb ol1"></div><div class="orb ol2"></div><div class="orb ol3"></div>
+  <div class="orb odot od1"></div>
+  <div class="orb or1"></div><div class="orb or2"></div><div class="orb or3"></div>
+  <div class="orb odot od2"></div>
+  <div class="oring orn1"></div><div class="oring orn2"></div>
+  <div class="pi">
+    <div class="hbadge ani"><span class="dlive"></span> Open to Data Analytics Roles</div>
+    <div class="hname ani">Hi, I'm<span>Surya</span></div>
+    <div class="hrole ani">Data Analyst &nbsp;·&nbsp; AI &amp; Data Science</div>
+    <p class="htag ani">Turning raw data into stories that drive real decisions.</p>
+    <div class="hbtns ani">
+      <button class="bsolid" onclick="gp(5)">View Projects</button>
+      <button class="bline" onclick="gp(6)">Contact Me</button>
+    </div>
+  </div>
+  <div class="scue"><div class="scueline"></div><span>Scroll</span></div>
 </div>
-
 <!-- ══ P2 ABOUT ══ -->
 <div class="panel p2" id="p1">
-  <div class="orb ol1" style="opacity:.3"></div>
-  <div class="orb or1" style="opacity:.3"></div>
-  <div class="oring orn1"></div>
-  <div class="pi">
-    <div class="stag stag-dark ani">Who I Am</div>
-    <div class="title tc-dark ani" style="font-size:clamp(2rem,4.8vw,3.4rem)">Building insights<br>from data.</div>
-    <div class="agrid ani">
-      <div class="atext">
-        <p>I'm an <strong>AI &amp; Data Science student</strong> with a deep focus on <strong>Data Analytics</strong>. I love finding patterns, asking the right questions, and transforming messy data into clarity.</p>
-        <p>I work with <strong>Python (Pandas, NumPy), SQL, Excel, and Tableau</strong> to clean, analyse and visualise data. I enjoy problem-solving — breaking down complex datasets step by step.</p>
-        <p>I have built an <strong>On-Duty Management System with a team</strong> and am actively upskilling through internships and certifications.</p>
-      </div>
-      <div class="sgrid">
-        <div class="sbox"><div class="snum">5+</div><div class="slbl">Certificates</div></div>
-        <div class="sbox"><div class="snum">2+</div><div class="slbl">Internships</div></div>
-        <div class="sbox"><div class="snum">3+</div><div class="slbl">Projects</div></div>
-        <div class="sbox"><div class="snum">∞</div><div class="slbl">Curiosity</div></div>
-      </div>
-    </div>
-  </div>
+  <div class="orb ol1" style="opacity:.3"></div>
+  <div class="orb or1" style="opacity:.3"></div>
+  <div class="oring orn1"></div>
+  <div class="pi">
+    <div class="stag stag-dark ani">Who I Am</div>
+    <div class="title tc-dark ani" style="font-size:clamp(2rem,4.8vw,3.4rem)">Building insights<br>from data.</div>
+    <div class="agrid ani">
+      <div class="atext">
+        <p>I'm an <strong>AI &amp; Data Science student</strong> with a deep focus on <strong>Data Analytics</strong>. I love finding patterns, asking the right questions, and transforming messy data into clarity.</p>
+        <p>I work with <strong>Python (Pandas, NumPy), SQL, Excel, and Tableau</strong> to clean, analyse and visualise data. I enjoy problem-solving — breaking down complex datasets step by step.</p>
+        <p>I have built an <strong>On-Duty Management System with a team</strong> and am actively upskilling through internships and certifications.</p>
+      </div>
+      <div class="sgrid">
+        <div class="sbox"><div class="snum">5+</div><div class="slbl">Certificates</div></div>
+        <div class="sbox"><div class="snum">2+</div><div class="slbl">Internships</div></div>
+        <div class="sbox"><div class="snum">3+</div><div class="slbl">Projects</div></div>
+        <div class="sbox"><div class="snum">∞</div><div class="slbl">Curiosity</div></div>
+      </div>
+    </div>
+  </div>
 </div>
-
 <!-- ══ P3 SKILLS ══ -->
 <div class="panel p3" id="p2">
-  <div class="orb ol2"></div><div class="orb or2"></div>
-  <!-- Title pinned near top -->
-  <div class="pi" style="position:absolute;top:13%;width:100%;">
-    <div class="stag stag-light ani">What I Know</div>
-    <div class="title tc-light ani" style="font-size:clamp(2rem,4.8vw,3.4rem)">Data Analytics<br>Skill Set</div>
-  </div>
-  <!-- Orbit centred in panel -->
-  <div class="obox">
-    <div class="oring2 ra"></div>
-    <div class="oring2 rb"></div>
-    <div class="ocore">📊<span>Analytics</span></div>
-    <div class="sn sn1"><span class="sni">🐍</span><span class="snl">Python</span></div>
-    <div class="sn sn2"><span class="sni">🗄️</span><span class="snl">SQL</span></div>
-    <div class="sn sn3"><span class="sni">🐼</span><span class="snl">Pandas</span></div>
-    <div class="sn sn4"><span class="sni">📈</span><span class="snl">Tableau</span></div>
-    <div class="sn sn5"><span class="sni">📊</span><span class="snl">Excel</span></div>
-    <div class="sn sn6"><span class="sni">🔢</span><span class="snl">NumPy</span></div>
-    <div class="so so1"><span class="sni">🧹</span><span class="snl">Data<br>Cleaning</span></div>
-    <div class="so so2"><span class="sni">🔍</span><span class="snl">Problem<br>Solving</span></div>
-    <div class="so so3"><span class="sni">📉</span><span class="snl">Data Viz</span></div>
-    <div class="so so4"><span class="sni">📋</span><span class="snl">Dashboards</span></div>
-    <div class="so so5"><span class="sni">🤖</span><span class="snl">ML Basics</span></div>
-    <div class="so so6"><span class="sni">📐</span><span class="snl">Statistics</span></div>
-    <div class="so so7"><span class="sni">🗂️</span><span class="snl">Data<br>Modelling</span></div>
-    <div class="so so8"><span class="sni">⚡</span><span class="snl">EDA</span></div>
-  </div>
+  <div class="orb ol2"></div><div class="orb or2"></div>
+  <!-- Title pinned near top -->
+  <div class="pi" style="position:absolute;top:13%;width:100%;">
+    <div class="stag stag-light ani">What I Know</div>
+    <div class="title tc-light ani" style="font-size:clamp(2rem,4.8vw,3.4rem)">Data Analytics<br>Skill Set</div>
+  </div>
+  <!-- Orbit centred in panel -->
+  <div class="obox">
+    <div class="oring2 ra"></div>
+    <div class="oring2 rb"></div>
+    <div class="ocore">📊<span>Analytics</span></div>
+    <div class="sn sn1"><span class="sni">🐍</span><span class="snl">Python</span></div>
+    <div class="sn sn2"><span class="sni">🗄️</span><span class="snl">SQL</span></div>
+    <div class="sn sn3"><span class="sni">🐼</span><span class="snl">Pandas</span></div>
+    <div class="sn sn4"><span class="sni">📈</span><span class="snl">Tableau</span></div>
+    <div class="sn sn5"><span class="sni">📊</span><span class="snl">Excel</span></div>
+    <div class="sn sn6"><span class="sni">🔢</span><span class="snl">NumPy</span></div>
+    <div class="so so1"><span class="sni">🧹</span><span class="snl">Data<br>Cleaning</span></div>
+    <div class="so so2"><span class="sni">🔍</span><span class="snl">Problem<br>Solving</span></div>
+    <div class="so so3"><span class="sni">📉</span><span class="snl">Data Viz</span></div>
+    <div class="so so4"><span class="sni">📋</span><span class="snl">Dashboards</span></div>
+    <div class="so so5"><span class="sni">🤖</span><span class="snl">ML Basics</span></div>
+    <div class="so so6"><span class="sni">📐</span><span class="snl">Statistics</span></div>
+    <div class="so so7"><span class="sni">🗂️</span><span class="snl">Data<br>Modelling</span></div>
+    <div class="so so8"><span class="sni">⚡</span><span class="snl">EDA</span></div>
+  </div>
 </div>
-
 <!-- ══ P4 INTERNSHIPS ══ -->
 <div class="panel p4" id="p3">
-  <div class="orb ol1" style="opacity:.28"></div>
-  <div class="orb or1" style="opacity:.28"></div>
-  <div class="oring orn1"></div>
-  <div class="pi">
-    <div class="stag stag-dark ani">Experience</div>
-    <div class="title tc-dark ani" style="font-size:clamp(2rem,4.8vw,3.4rem)">Internships &amp;<br>Work Experience</div>
-    <div class="icards ani">
-      <div class="icard">
-          <div class="icco">Cognifyz Technologies</div>
-          <span class="icbadge done">Completed</span>
-        </div>
-        <div class="icrole">Data Analytics Intern</div>
-        <div class="icdur">📅 Feb 2026 – Mar 2026</div>
-        <div class="icdesc">Cleaned and analysed datasets using Python &amp; Excel. Built dashboards to present insights to the team. Automated reporting workflows using Pandas.</div>
-      </div>
-      <div class="icard">
-        <div class="ictop">
-          <div class="icco">Codsoft Solutions</div>
-          <span class="icbadge done">Completed</span>
-        </div>
-        <div class="icrole">Python Programming Intern</div>
-        <div class="icdur">📅 Mar 2026 – Apr 2026</div>
-        <div class="icdesc">Developed Python applications: To-Do List, Calculator, Password Generator, Rock-Paper-Scissors, and Contact Book. Applied data structures, control flow, and input handling.</div>
-      </div>
-    </div>
-    <p class="enote ani">A perfect person chooses quality over quantity.</p>
-  </div>
+  <div class="orb ol1" style="opacity:.28"></div>
+  <div class="orb or1" style="opacity:.28"></div>
+  <div class="oring orn1"></div>
+  <div class="pi">
+    <div class="stag stag-dark ani">Experience</div>
+    <div class="title tc-dark ani" style="font-size:clamp(2rem,4.8vw,3.4rem)">Internships &amp;<br>Work Experience</div>
+    <div class="icards ani">
+      <div class="icard">
+        <div class="ictop">
+          <div class="icco">Cognifyz Technologies</div>
+          <span class="icbadge done">Completed</span>
+        </div>
+        <div class="icrole">Data Analytics Intern</div>
+        <div class="icdur">📅 Feb 2026 – Mar 2026</div>
+        <div class="icdesc">Cleaned and analysed datasets using Python &amp; Excel. Built dashboards to present insights to the team. Automated reporting workflows using Pandas.</div>
+      </div>
+      <div class="icard">
+        <div class="ictop">
+          <div class="icco">Codsoft Solutions</div>
+          <span class="icbadge done">Completed</span>
+        </div>
+        <div class="icrole">Python Programming Intern</div>
+        <div class="icdur">📅 Mar 2026 – Apr 2026</div>
+        <div class="icdesc">Developed Python applications: To-Do List, Calculator, Password Generator, Rock-Paper-Scissors, and Contact Book. Applied data structures, control flow, and input handling.</div>
+      </div>
+    </div>
+    <p class="enote ani">A perfect person chooses quality over quantity.</p>
+  </div>
 </div>
-
 <!-- ══ P5 CERTIFICATES ══ -->
 <div class="panel p5" id="p4">
-  <div class="orb ol2"></div><div class="orb or2"></div><div class="orb or3"></div>
-  <div class="pi">
-    <div class="stag stag-light ani">Achievements</div>
-    <div class="title tc-light ani" style="font-size:clamp(2rem,4.8vw,3.4rem)">Certificates &amp;<br>Credentials</div>
-    <div class="cgrid ani">
-      <div class="cchip"><div class="cico">🏅</div><div><div class="cn">IBM Data Analysis</div><div class="ciss">Coursera</div><div class="cyr">2026</div></div></div>
-      <div class="cchip"><div class="cico">🏅</div><div><div class="cn">Deloitte Data Analytics</div><div class="ciss">Forage</div><div class="cyr">2026</div></div></div>
-      <div class="cchip"><div class="cico">🏅</div><div><div class="cn">TCS GenAI Data Analytics</div><div class="ciss">Forage</div><div class="cyr">2026</div></div></div>
-    </div>
-    <p class="ani" style="margin-top:1rem;font-size:.75rem;color:rgba(255,255,255,.28);font-style:italic;">Screening the real success makes more power.</p>
-  </div>
+  <div class="orb ol2"></div><div class="orb or2"></div><div class="orb or3"></div>
+  <div class="pi">
+    <div class="stag stag-light ani">Achievements</div>
+    <div class="title tc-light ani" style="font-size:clamp(2rem,4.8vw,3.4rem)">Certificates &amp;<br>Credentials</div>
+    <div class="cgrid ani">
+      <div class="cchip"><div class="cico">🏅</div><div><div class="cn">IBM Data Analysis</div><div class="ciss">Coursera</div><div class="cyr">2026</div></div></div>
+      <div class="cchip"><div class="cico">🏅</div><div><div class="cn">Deloitte Data Analytics</div><div class="ciss">Forage</div><div class="cyr">2026</div></div></div>
+      <div class="cchip"><div class="cico">🏅</div><div><div class="cn">TCS GenAI Data Analytics</div><div class="ciss">Forage</div><div class="cyr">2026</div></div></div>
+    </div>
+    <p class="ani" style="margin-top:1rem;font-size:.75rem;color:rgba(255,255,255,.28);font-style:italic;">Screening the real success makes more power.</p>
+  </div>
 </div>
-
 <!-- ══ P6 PROJECTS ══ -->
 <div class="panel p6" id="p5">
-  <div class="orb ol1" style="opacity:.25"></div>
-  <div class="orb or1" style="opacity:.25"></div>
-  <div class="oring orn1"></div>
-  <div class="pi">
-    <div class="stag stag-dark ani">My Work</div>
-    <div class="title tc-dark ani" style="font-size:clamp(1.7rem,3.5vw,2.8rem)">Featured Projects</div>
-    <div class="prow ani">
-      <div class="pcard">
-        <div class="ptop"><div class="pnum">01</div><h3>OD Management System</h3></div>
-        <div class="pbody">
-          <p>Automated student On-Duty request system with student login, faculty approval, and admin panel. Data tracked with MongoDB.</p>
-          <div class="ptags"><span class="ptag">SQL</span><span class="ptag">Python</span><span class="ptag">Data Tracking</span></div>
-          <a href="https://github.com/SURYA-ADS-eng/ODIFY" target="_blank" class="plink">View on GitHub →</a>
-        </div>
-      </div>
-      <div class="pcard">
-        <div class="ptop"><div class="pnum">02</div><h3>Data Analytics Dashboard</h3></div>
-        <div class="pbody">
-          <p>Interactive dashboards using Excel &amp; Tableau to transform raw business data into clear visual insights for decision-makers.</p>
-          <div class="ptags"><span class="ptag">Excel</span><span class="ptag">Tableau</span><span class="ptag">Data Viz</span></div>
-          <a href="https://github.com/SURYA-ADS-eng" target="_blank" class="plink">View on GitHub →</a>
-        </div>
-      </div>
-      <div class="pcard">
-        <div class="ptop"><div class="pnum">03</div><h3>Python Problem Solving</h3></div>
-        <div class="pbody">
-          <p>Collection of problems solved using Python functions, datatypes, logical solutions — covering all methods and built-in functions.</p>
-          <div class="ptags"><span class="ptag">Python</span><span class="ptag">Logical</span><span class="ptag">Loops</span><span class="ptag">Errors</span></div>
-          <a href="https://github.com/SURYA-ADS-eng" target="_blank" class="plink">View on GitHub →</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="orb ol1" style="opacity:.25"></div>
+  <div class="orb or1" style="opacity:.25"></div>
+  <div class="oring orn1"></div>
+  <div class="pi">
+    <div class="stag stag-dark ani">My Work</div>
+    <div class="title tc-dark ani" style="font-size:clamp(1.7rem,3.5vw,2.8rem)">Featured Projects</div>
+    <div class="prow ani">
+      <div class="pcard">
+        <div class="ptop"><div class="pnum">01</div><h3>OD Management System</h3></div>
+        <div class="pbody">
+          <p>Automated student On-Duty request system with student login, faculty approval, and admin panel. Data tracked with MongoDB.</p>
+          <div class="ptags"><span class="ptag">SQL</span><span class="ptag">Python</span><span class="ptag">Data Tracking</span></div>
+          <a href="https://github.com/SURYA-ADS-eng/ODIFY" target="_blank" class="plink">View on GitHub →</a>
+        </div>
+      </div>
+      <div class="pcard">
+        <div class="ptop"><div class="pnum">02</div><h3>Data Analytics Dashboard</h3></div>
+        <div class="pbody">
+          <p>Interactive dashboards using Excel &amp; Tableau to transform raw business data into clear visual insights for decision-makers.</p>
+          <div class="ptags"><span class="ptag">Excel</span><span class="ptag">Tableau</span><span class="ptag">Data Viz</span></div>
+          <a href="https://github.com/SURYA-ADS-eng" target="_blank" class="plink">View on GitHub →</a>
+        </div>
+      </div>
+      <div class="pcard">
+        <div class="ptop"><div class="pnum">03</div><h3>Python Problem Solving</h3></div>
+        <div class="pbody">
+          <p>Collection of problems solved using Python functions, datatypes, logical solutions — covering all methods and built-in functions.</p>
+          <div class="ptags"><span class="ptag">Python</span><span class="ptag">Logical</span><span class="ptag">Loops</span><span class="ptag">Errors</span></div>
+          <a href="https://github.com/SURYA-ADS-eng" target="_blank" class="plink">View on GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
 <!-- ══ P7 CONTACT ══ -->
 <div class="panel p7" id="p6">
-  <div class="orb ol1"></div><div class="orb ol2"></div>
-  <div class="orb or1"></div><div class="orb or2"></div>
-  <div class="oring orn1"></div>
-  <div class="pi">
-    <div class="stag stag-light ani">Get In Touch</div>
-    <div class="title tc-light ani" style="font-size:clamp(2rem,4.8vw,3.4rem)">Let's Connect<br>&amp; Collaborate</div>
-    <div class="cgrd ani">
-      <div class="cleft">
-        <p>I'm actively looking for <strong style="color:#fff">Data Analytics internships and opportunities</strong>. If you have a project, role, or just want to talk data — reach out!</p>
-      </div>
-      <div class="cccards">
-        <a href="mailto:vpksurya05@gmail.com" class="cccard"><div class="ccico">📧</div><div><div class="cclbl">Email</div><div class="ccval">vpksurya05@gmail.com</div></div></a>
-        <a href="tel:+919489228075" class="cccard"><div class="ccico">📞</div><div><div class="cclbl">Phone</div><div class="ccval">+91 9489228075</div></div></div></a>
-        <a href="https://www.linkedin.com/in/surya-ads/" target="_blank" class="cccard"><div class="ccico">💼</div><div><div class="cclbl">LinkedIn</div><div class="ccval">linkedin.com/in/surya-ads</div></div></a>
-        <a href="https://github.com/SURYA-ADS-eng" target="_blank" class="cccard"><div class="ccico">💻</div><div><div class="cclbl">GitHub</div><div class="ccval">github.com/SURYA-ADS-eng</div></div></a>
-      </div>
-    </div>
-    <span class="fline">© 2025 Surya &nbsp;·&nbsp; Data Analytics Portfolio</span>
-  </div>
+  <div class="orb ol1"></div><div class="orb ol2"></div>
+  <div class="orb or1"></div><div class="orb or2"></div>
+  <div class="oring orn1"></div>
+  <div class="pi">
+    <div class="stag stag-light ani">Get In Touch</div>
+    <div class="title tc-light ani" style="font-size:clamp(2rem,4.8vw,3.4rem)">Let's Connect<br>&amp; Collaborate</div>
+    <div class="cgrd ani">
+      <div class="cleft">
+        <p>I'm actively looking for <strong style="color:#fff">Data Analytics internships and opportunities</strong>. If you have a project, role, or just want to talk data — reach out!</p>
+      </div>
+      <div class="cccards">
+        <a href="mailto:vpksurya05@gmail.com" class="cccard"><div class="ccico">📧</div><div><div class="cclbl">Email</div><div class="ccval">vpksurya05@gmail.com</div></div></a>
+        <a href="tel:+919489228075" class="cccard"><div class="ccico">📞</div><div><div class="cclbl">Phone</div><div class="ccval">+91 9489228075</div></div></div></a>
+        <a href="https://www.linkedin.com/in/surya-ads/" target="_blank" class="cccard"><div class="ccico">💼</div><div><div class="cclbl">LinkedIn</div><div class="ccval">linkedin.com/in/surya-ads</div></div></a>
+        <a href="https://github.com/SURYA-ADS-eng" target="_blank" class="cccard"><div class="ccico">💻</div><div><div class="cclbl">GitHub</div><div class="ccval">github.com/SURYA-ADS-eng</div></div></a>
+      </div>
+    </div>
+    <span class="fline">© 2025 Surya &nbsp;·&nbsp; Data Analytics Portfolio</span>
+  </div>
 </div>
-
 </div><!-- /sw -->
-
 <script>
 (function(){
-  var sw = document.getElementById('sw');
-  var panels = [document.getElementById('p0'),document.getElementById('p1'),document.getElementById('p2'),document.getElementById('p3'),document.getElementById('p4'),document.getElementById('p5'),document.getElementById('p6')];
-  var N = panels.length;
-
-  /* Build nav dots */
-  var dotsWrap = document.getElementById('dots');
-  for(var i=0;i<N;i++){
-    var d = document.createElement('div');
-    d.className = 'sdot' + (i===0?' on':'');
-    (function(idx){ d.addEventListener('click', function(){ gp(idx); }); })(i);
-    dotsWrap.appendChild(d);
-  }
-  var dotEls = dotsWrap.querySelectorAll('.sdot');
-
-  /* Go to panel */
-  window.gp = function(i){
-    if(panels[i]) panels[i].scrollIntoView({behavior:'smooth'});
-  };
-
-  /* Hamburger */
-  document.getElementById('ham').addEventListener('click', function(){
-    document.getElementById('mm').classList.toggle('open');
-  });
-  window.cm = function(){ document.getElementById('mm').classList.remove('open'); };
-
-  /* Mark first panel visible immediately */
-  panels[0].classList.add('in-view');
-  panels[0].querySelectorAll('.ani').forEach(function(el){ el.classList.add('show'); });
-
-  /* Use scroll event on sw to detect current panel — most reliable cross-browser */
-  function onScroll(){
-    var scrollTop = sw.scrollTop;
-    var vh = sw.clientHeight;
-    var idx = Math.round(scrollTop / vh);
-    idx = Math.max(0, Math.min(N-1, idx));
-
-    dotEls.forEach(function(d,i){ d.classList.toggle('on', i===idx); });
-
-    panels.forEach(function(p,i){
-      if(i === idx){
-        p.classList.add('in-view');
-        /* animate children in with stagger */
-        p.querySelectorAll('.ani').forEach(function(el,j){
-          setTimeout(function(){ el.classList.add('show'); }, j * 80);
-        });
-      }
-    });
-  }
-
-  sw.addEventListener('scroll', onScroll, {passive:true});
-  /* Run once on load */
-  onScroll();
+  var sw = document.getElementById('sw');
+  var panels = [document.getElementById('p0'),document.getElementById('p1'),document.getElementById('p2'),document.getElementById('p3'),document.getElementById('p4'),document.getElementById('p5'),document.getElementById('p6')];
+  var N = panels.length;
+  /* Build nav dots */
+  var dotsWrap = document.getElementById('dots');
+  for(var i=0;i<N;i++){
+    var d = document.createElement('div');
+    d.className = 'sdot' + (i===0?' on':'');
+    (function(idx){ d.addEventListener('click', function(){ gp(idx); }); })(i);
+    dotsWrap.appendChild(d);
+  }
+  var dotEls = dotsWrap.querySelectorAll('.sdot');
+  /* Go to panel */
+  window.gp = function(i){
+    if(panels[i]) panels[i].scrollIntoView({behavior:'smooth'});
+  };
+  /* Hamburger */
+  document.getElementById('ham').addEventListener('click', function(){
+    document.getElementById('mm').classList.toggle('open');
+  });
+  window.cm = function(){ document.getElementById('mm').classList.remove('open'); };
+  /* Mark first panel visible immediately */
+  panels[0].classList.add('in-view');
+  panels[0].querySelectorAll('.ani').forEach(function(el){ el.classList.add('show'); });
+  /* Use scroll event on sw to detect current panel — most reliable cross-browser */
+  function onScroll(){
+    var scrollTop = sw.scrollTop;
+    var vh = sw.clientHeight;
+    var idx = Math.round(scrollTop / vh);
+    idx = Math.max(0, Math.min(N-1, idx));
+    dotEls.forEach(function(d,i){ d.classList.toggle('on', i===idx); });
+    panels.forEach(function(p,i){
+      if(i === idx){
+        p.classList.add('in-view');
+        /* animate children in with stagger */
+        p.querySelectorAll('.ani').forEach(function(el,j){
+          setTimeout(function(){ el.classList.add('show'); }, j * 80);
+        });
+      }
+    });
+  }
+  sw.addEventListener('scroll', onScroll, {passive:true});
+  /* Run once on load */
+  onScroll();
 })();
 </script>
 </body>
